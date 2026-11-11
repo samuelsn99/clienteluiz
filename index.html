@@ -1,0 +1,1060 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Método DPE</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Menos clientes, mais dinheiro no bolso e tempo sobrando. O método do Luiz Gabriel para quem presta serviço digital.">
+<script>(function(){var r=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;if(!r&&'IntersectionObserver' in window)document.documentElement.classList.add('js');})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Caveat:wght@600;700&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: uma mesa de trabalho em capítulos — seções "Noite" (azul quadriculado, bordas rasgadas)
+   alternam com seções "Papel" (kraft); o conteúdo é colagem de papéis presos com fita.
+   Tokens: Design System "Método DPE" (tokens.json + bundle.css), inlined abaixo. */
+:root, [data-theme="papel"] {
+  --navy-950: #071828;
+  --navy-900: #0A2038;
+  --navy-800: #0F2742;
+  --navy-700: #1A3658;
+  --navy-grid: rgba(255,255,255,0.07);
+  --yellow-400: #FFC844;
+  --yellow-500: #EDB22E;
+  --yellow-100: #FFF1C7;
+  --paper-50: #F6F2E8;
+  --paper-100: #EDE7DA;
+  --paper-200: #DDD4C2;
+  --slate-500: #4A5A6E;
+  --slate-300: #A9B6C8;
+  --red-700: #9E1B24;
+  --red-300: #F08A8F;
+  --tape: rgba(204,198,184,0.82);
+  --ground: var(--paper-100);
+  --ground-grid: rgba(10,32,56,0.07);
+  --ground-fg: var(--navy-900);
+  --ground-fg-muted: var(--slate-500);
+  --ground-line: rgba(10,32,56,0.18);
+  --paper: var(--paper-50);
+  --paper-ink: var(--navy-900);
+  --paper-ink-muted: var(--slate-500);
+  --paper-edge: var(--paper-200);
+  --strip: var(--navy-900);
+  --strip-ink: var(--paper-50);
+  --accent: var(--yellow-400);
+  --accent-press: var(--yellow-500);
+  --on-accent: var(--navy-900);
+  --danger: var(--red-700);
+  --focus: var(--navy-900);
+  --shadow-paper: 0 1px 0 rgba(10,32,56,0.06), 0 16px 28px -14px rgba(10,32,56,0.42);
+  --shadow-offset: 4px 4px 0 #0A2038;
+  --shadow-offset-press: 1px 1px 0 #0A2038;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 112px;
+  --radius-0: 0px;
+  --radius-sm: 4px;
+  --radius-frame: 16px;
+  --radius-pill: 999px;
+  --tilt-left: -2deg;
+  --tilt-right: 1.5deg;
+  --tilt-strong: -4deg;
+  --tilt-mark: -1deg;
+  --font-serif: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --font-sans: Archivo, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --font-hand: Caveat, "Segoe Print", "Comic Sans MS", cursive;
+}
+[data-theme="noite"] {
+  --ground: var(--navy-800);
+  --ground-grid: rgba(255,255,255,0.05);
+  --ground-fg: var(--paper-50);
+  --ground-fg-muted: var(--slate-300);
+  --ground-line: rgba(246,242,232,0.18);
+  --strip: var(--navy-700);
+  --danger: var(--red-300);
+  --focus: var(--yellow-400);
+  --shadow-paper: 0 1px 0 rgba(0,0,0,0.25), 0 20px 34px -14px rgba(0,0,0,0.7);
+  --shadow-offset: 4px 4px 0 #F6F2E8;
+  --shadow-offset-press: 1px 1px 0 #F6F2E8;
+}
+
+/* Método DPE — componentes. Carregado depois de tokens.css. */
+
+:root { --dpe-torn: polygon(0.00% 1.3px, 7.14% 0.6px, 14.29% 2.6px, 21.43% 0.3px, 28.57% 2.1px, 35.71% 1.5px, 42.86% 0.2px, 50.00% 2.0px, 57.14% 0.1px, 64.29% 1.7px, 71.43% 0.3px, 78.57% 0.4px, 85.71% 1.7px, 92.86% 3.3px, 100.00% 0.5px, calc(100% - 0.5px) 7.14%, calc(100% - 1.5px) 14.29%, calc(100% - 2.3px) 21.43%, calc(100% - 1.4px) 28.57%, calc(100% - 1.0px) 35.71%, calc(100% - 2.3px) 42.86%, calc(100% - 0.1px) 50.00%, calc(100% - 2.1px) 57.14%, calc(100% - 0.7px) 64.29%, calc(100% - 0.3px) 71.43%, calc(100% - 0.3px) 78.57%, calc(100% - 0.7px) 85.71%, calc(100% - 2.0px) 92.86%, 100.00% calc(100% - 0.7px), 92.86% calc(100% - 2.3px), 85.71% calc(100% - 2.6px), 78.57% calc(100% - 1.5px), 71.43% calc(100% - 2.2px), 64.29% calc(100% - 0.3px), 57.14% calc(100% - 0.2px), 50.00% calc(100% - 0.8px), 42.86% calc(100% - 2.7px), 35.71% calc(100% - 1.7px), 28.57% calc(100% - 1.3px), 21.43% calc(100% - 2.3px), 14.29% calc(100% - 1.8px), 7.14% calc(100% - 1.2px), 0.00% calc(100% - 3.2px), 1.7px 92.86%, 0.6px 85.71%, 1.4px 78.57%, 1.3px 71.43%, 2.1px 64.29%, 1.8px 57.14%, 0.7px 50.00%, 2.4px 42.86%, 0.3px 35.71%, 1.0px 28.57%, 1.8px 21.43%, 0.4px 14.29%, 1.2px 7.14%); --dpe-torn-soft: polygon(0.00% 0.1px, 10.00% 2.0px, 20.00% 2.3px, 30.00% 1.7px, 40.00% 2.6px, 50.00% 0.9px, 60.00% 2.1px, 70.00% 1.8px, 80.00% 1.7px, 90.00% 1.4px, 100.00% 2.5px, calc(100% - 1.7px) 10.00%, calc(100% - 0.9px) 20.00%, calc(100% - 1.2px) 30.00%, calc(100% - 0.1px) 40.00%, calc(100% - 1.3px) 50.00%, calc(100% - 1.2px) 60.00%, calc(100% - 1.8px) 70.00%, calc(100% - 1.5px) 80.00%, calc(100% - 0.5px) 90.00%, 100.00% calc(100% - 1.2px), 90.00% calc(100% - 2.0px), 80.00% calc(100% - 0.1px), 70.00% calc(100% - 1.4px), 60.00% calc(100% - 0.5px), 50.00% calc(100% - 0.4px), 40.00% calc(100% - 0.2px), 30.00% calc(100% - 2.3px), 20.00% calc(100% - 0.4px), 10.00% calc(100% - 0.7px), 0.00% calc(100% - 1.2px), 1.6px 90.00%, 0.1px 80.00%, 0.8px 70.00%, 1.0px 60.00%, 1.6px 50.00%, 1.5px 40.00%, 1.6px 30.00%, 0.5px 20.00%, 0.7px 10.00%); --dpe-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.04 0 0 0 0 0.12 0 0 0 0 0.22 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E"); }
+
+/* ---------- fundos ---------- */
+.dpe-ground {
+  background-color: var(--ground); color: var(--ground-fg); font-family: var(--font-sans);
+  background-image: linear-gradient(var(--ground-grid) 1px, transparent 1px), linear-gradient(90deg, var(--ground-grid) 1px, transparent 1px);
+  background-size: 32px 32px; background-position: -1px -1px;
+}
+.dpe-ground--plain { background-image: none; }
+::selection { background: var(--yellow-100); color: var(--paper-ink); }
+
+/* ---------- papel ---------- */
+.dpe-paper {
+  position: relative; background-color: var(--paper); color: var(--paper-ink);
+  background-image: var(--dpe-grain); box-shadow: var(--shadow-paper); border-radius: var(--radius-0);
+}
+.dpe-torn { clip-path: var(--dpe-torn); filter: drop-shadow(0 10px 12px rgba(10,32,56,.22)); box-shadow: none; }
+.dpe-tilt-left { transform: rotate(var(--tilt-left)); }
+.dpe-tilt-right { transform: rotate(var(--tilt-right)); }
+.dpe-tilt-strong { transform: rotate(var(--tilt-strong)); }
+
+/* fita adesiva: um span.dpe-tape dentro de um papel (fora do clip) */
+.dpe-tape {
+  position: absolute; width: 76px; height: 22px; background: var(--tape); z-index: 2;
+  clip-path: polygon(3% 0, 97% 4%, 100% 30%, 96% 55%, 100% 82%, 95% 100%, 4% 96%, 0 70%, 3% 45%, 0 18%);
+  top: -11px; left: 50%; transform: translateX(-50%) rotate(-3deg); pointer-events: none;
+}
+.dpe-tape--corner { left: -14px; top: -6px; transform: rotate(-32deg); width: 64px; }
+
+/* ---------- botão ---------- */
+.dpe-btn {
+  display: inline-flex; align-items: center; gap: var(--space-2); cursor: pointer;
+  font: 800 15px/1.1 var(--font-sans); letter-spacing: .04em; text-transform: uppercase; text-decoration: none;
+  padding: 17px 28px; border-radius: var(--radius-sm); border: 2px solid var(--navy-900);
+  background: var(--accent); color: var(--on-accent); box-shadow: var(--shadow-offset);
+  transition: transform .14s cubic-bezier(.3,.7,.4,1), box-shadow .14s, background-color .14s;
+}
+.dpe-btn:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--navy-900); background: var(--accent-press); }
+[data-theme="noite"] .dpe-btn:hover { box-shadow: 6px 6px 0 var(--paper-50); }
+.dpe-btn:active { transform: translate(3px,3px); box-shadow: var(--shadow-offset-press); }
+.dpe-btn:focus-visible, .dpe-faq summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.dpe-btn--ink { background: var(--navy-900); color: var(--paper-50); border-color: var(--navy-900); }
+.dpe-btn--ink:hover { background: var(--navy-700); }
+.dpe-btn--ghost { background: transparent; color: var(--ground-fg); border-color: currentColor; box-shadow: none; }
+.dpe-btn--ghost:hover { box-shadow: none; background: transparent; text-decoration: underline; text-underline-offset: 4px; }
+.dpe-btn svg { width: 18px; height: 18px; }
+
+/* ---------- marca-texto ---------- */
+.dpe-hl {
+  display: inline; font-weight: 900; font-family: var(--font-sans); color: var(--on-accent);
+  background: linear-gradient(var(--accent), var(--accent)) no-repeat 0 0 / 100% 100%;
+  padding: .04em .18em; -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.dpe-hl--block { display: inline-block; transform: rotate(var(--tilt-mark)); }
+.dpe-hl--ink { color: var(--strip-ink); background-image: linear-gradient(var(--navy-900), var(--navy-900)); }
+.dpe-hl--sweep { animation: dpe-sweep .7s cubic-bezier(.65,0,.35,1) both; }
+
+/* ---------- pílula ---------- */
+.dpe-pill {
+  display: inline-flex; align-items: center; font: 800 14px/1 var(--font-sans); letter-spacing: .05em; text-transform: uppercase;
+  padding: 11px 20px; border-radius: var(--radius-pill); background: var(--accent); color: var(--on-accent);
+  box-shadow: var(--shadow-paper); transform: rotate(var(--tilt-strong));
+}
+.dpe-pill--paper { background: var(--paper); color: var(--paper-ink); transform: rotate(2deg); }
+.dpe-pill--ink { background: var(--navy-900); color: var(--paper-50); transform: rotate(1deg); }
+
+/* ---------- etiqueta com fita ---------- */
+.dpe-tag {
+  display: inline-block; position: relative; padding: 14px 26px 12px; font: 800 18px/1 var(--font-sans);
+  letter-spacing: .06em; text-transform: uppercase; transform: rotate(var(--tilt-right));
+}
+
+/* ---------- check ---------- */
+.dpe-check {
+  flex: none; display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: var(--radius-pill);
+  background: var(--accent); color: var(--on-accent);
+}
+.dpe-check svg { width: 24px; height: 24px; }
+.dpe-check--box {
+  width: 24px; height: 24px; border-radius: 3px; background: transparent; border: 2.5px solid var(--paper-ink);
+  position: relative; color: var(--accent);
+}
+.dpe-check--box svg { position: absolute; width: 30px; height: 30px; left: 1px; top: -10px; filter: drop-shadow(1px 1px 0 rgba(10,32,56,.35)); }
+
+/* faixa rasgada com check */
+.dpe-strip {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); position: relative;
+  padding: 22px 24px 22px 28px; background: var(--strip); color: var(--strip-ink);
+  font: 800 clamp(18px, 3.2vw, 24px)/1.1 var(--font-sans); letter-spacing: .01em; text-transform: uppercase;
+  clip-path: var(--dpe-torn-soft);
+}
+.dpe-strip-wrap { position: relative; filter: drop-shadow(0 10px 10px rgba(10,32,56,.25)); }
+.dpe-strip-wrap .dpe-tape { left: 18px; top: -6px; transform: rotate(-4deg); width: 64px; height: 18px; }
+
+/* ---------- nota de papel (HOJE) ---------- */
+.dpe-note { padding: var(--space-5) var(--space-5) 28px; min-width: 0; }
+.dpe-note h4 { margin: 0 0 var(--space-3); font: 800 15px/1 var(--font-sans); letter-spacing: .12em; text-transform: uppercase; }
+.dpe-note ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+.dpe-note li { display: flex; align-items: center; gap: var(--space-3); font: 700 18px/1.2 var(--font-sans); }
+.dpe-note li.is-open .dpe-check--box svg { display: none; }
+
+/* ---------- selo ---------- */
+.dpe-seal {
+  display: inline-grid; place-items: center; width: 72px; height: 72px; border-radius: var(--radius-pill);
+  background: var(--navy-900); color: var(--accent); box-shadow: 0 0 0 2px var(--navy-900), 0 0 0 3.5px var(--accent);
+}
+.dpe-seal svg { width: 30px; height: 30px; }
+.dpe-seal--lg { width: 104px; height: 104px; }
+.dpe-seal--lg svg { width: 44px; height: 44px; }
+
+/* ---------- cartão do método ---------- */
+.dpe-titlecard { padding: 34px 40px 30px; text-align: center; max-width: 440px; }
+.dpe-titlecard .k { font: 600 12px/1.3 var(--font-sans); letter-spacing: .2em; text-transform: uppercase; color: var(--paper-ink-muted); }
+.dpe-titlecard h2 { margin: 10px 0 0; font: 400 clamp(44px, 9vw, 64px)/.95 var(--font-serif); color: var(--paper-ink); letter-spacing: -.01em; }
+.dpe-titlecard h2 em { font-style: italic; }
+.dpe-titlecard .bar { display: block; width: 62%; height: 4px; margin: 16px auto 16px; background: var(--accent); border-radius: 2px; }
+.dpe-titlecard .k2 { font: 600 11px/1.3 var(--font-sans); letter-spacing: .22em; text-transform: uppercase; color: var(--paper-ink); }
+
+/* ---------- foto numerada ---------- */
+.dpe-photo { position: relative; padding: var(--space-2) var(--space-2) var(--space-2); width: 200px; max-width: 100%; }
+.dpe-photo .img {
+  position: relative; aspect-ratio: 4/5; max-width: 100%; overflow: hidden; background-color: var(--navy-700);
+  background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.06) 0 2px, transparent 2px 12px);
+}
+.dpe-photo .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.dpe-photo .cap { position: absolute; left: 12px; right: 12px; bottom: 12px; color: #FFFFFF; font: 400 24px/1 var(--font-serif); text-shadow: 0 2px 12px rgba(0,0,0,.6); }
+.dpe-photo .cap em { font-style: italic; }
+.dpe-photo .num {
+  position: absolute; z-index: 2; top: -14px; left: -12px; width: 40px; height: 40px; border-radius: var(--radius-pill);
+  display: grid; place-items: center; background: var(--accent); color: var(--on-accent); font: 800 18px/1 var(--font-sans);
+  box-shadow: 0 0 0 3px var(--paper);
+}
+
+/* ---------- moldura de aula ---------- */
+.dpe-frame { padding: 10px; border-radius: var(--radius-frame); background: var(--paper); box-shadow: var(--shadow-paper); }
+.dpe-frame .screen {
+  border-radius: calc(var(--radius-frame) - 6px); aspect-ratio: 16/9; max-width: 100%; overflow: hidden; position: relative;
+  background-color: var(--navy-950); background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 2px, transparent 2px 14px);
+}
+
+/* ---------- cadeia do número de segurança ---------- */
+.dpe-flow { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); }
+.dpe-flow .step { padding: 12px 16px 10px; font: 800 14px/1.1 var(--font-sans); letter-spacing: .05em; text-transform: uppercase; }
+.dpe-flow .step:nth-child(4n+1) { transform: rotate(-1.5deg); }
+.dpe-flow .step:nth-child(4n+3) { transform: rotate(1.2deg); }
+.dpe-flow .arrow { font: 700 30px/1 var(--font-hand); color: var(--ground-fg-muted); }
+.dpe-flow .step.is-key { background: var(--accent); background-image: var(--dpe-grain); color: var(--on-accent); transform: rotate(-2deg) scale(1.06); }
+
+/* ---------- antes / depois ---------- */
+.dpe-ba { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-6); }
+.dpe-ba > div { padding: var(--space-5) var(--space-5) 28px; min-width: 0; }
+.dpe-ba h4 { margin: 0 0 var(--space-4); font: 800 22px/1.1 var(--font-sans); }
+.dpe-ba ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font: 500 16px/1.4 var(--font-sans); }
+.dpe-ba li { display: flex; gap: 10px; align-items: flex-start; }
+.dpe-ba .x { flex: none; color: var(--danger); font: 700 22px/1 var(--font-hand); margin-top: -2px; }
+.dpe-ba .before li span:last-child { text-decoration: line-through; text-decoration-color: var(--red-700); text-decoration-thickness: 2px; }
+.dpe-ba .after { background: var(--strip); color: var(--strip-ink); clip-path: var(--dpe-torn-soft); }
+.dpe-ba .after h4 { color: var(--accent); }
+.dpe-ba .after .dpe-check { width: 24px; height: 24px; }
+.dpe-ba .after .dpe-check svg { width: 15px; height: 15px; }
+
+/* ---------- FAQ ---------- */
+.dpe-faq { display: grid; gap: var(--space-3); }
+.dpe-faq details { background: var(--paper); color: var(--paper-ink); box-shadow: var(--shadow-paper); }
+.dpe-faq summary {
+  list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: var(--space-4);
+  padding: 18px 20px; font: 700 17px/1.3 var(--font-sans);
+}
+.dpe-faq summary::-webkit-details-marker { display: none; }
+.dpe-faq summary::after {
+  content: "+"; flex: none; width: 30px; height: 30px; border-radius: var(--radius-pill); display: grid; place-items: center;
+  background: var(--accent); color: var(--on-accent); font: 800 20px/1 var(--font-sans); transition: transform .25s cubic-bezier(.3,.7,.4,1);
+}
+.dpe-faq details[open] summary::after { transform: rotate(45deg); }
+.dpe-faq .a { padding: 0 20px 20px; font: 400 16px/1.6 var(--font-sans); color: var(--paper-ink-muted); max-width: 62ch; }
+
+/* ---------- movimento ---------- */
+@keyframes dpe-drop { from { opacity: 0; transform: translateY(-28px) rotate(-7deg) scale(1.04); } 70% { opacity: 1; } }
+@keyframes dpe-sweep { from { background-size: 0% 100%; } to { background-size: 100% 100%; } }
+@keyframes dpe-stamp { 0% { transform: scale(1.8); opacity: 0; } 60% { transform: scale(.92); opacity: 1; } 100% { transform: scale(1); } }
+@keyframes dpe-tape { from { opacity: 0; transform: translateX(-50%) rotate(-3deg) scaleX(.4); } }
+.dpe-anim-drop { animation: dpe-drop .65s cubic-bezier(.2,.9,.3,1.25) both; }
+.dpe-anim-stamp { animation: dpe-stamp .45s cubic-bezier(.2,.9,.3,1.2) both; }
+.dpe-delay-1 { animation-delay: .12s; } .dpe-delay-2 { animation-delay: .24s; } .dpe-delay-3 { animation-delay: .36s; }
+@media (prefers-reduced-motion: reduce) {
+  .dpe-anim-drop, .dpe-anim-stamp, .dpe-hl--sweep { animation: none; }
+  .dpe-btn, .dpe-faq summary::after { transition: none; }
+}
+
+
+/* ================= landing ================= */
+:root { color-scheme: light; --tear: polygon(0.00% 6.3px, 2.50% 7.8px, 5.00% 12.9px, 7.50% 6.5px, 10.00% 7.1px, 12.50% 8.2px, 15.00% 2.6px, 17.50% 7.2px, 20.00% 8.8px, 22.50% 11.1px, 25.00% 1.3px, 27.50% 4.2px, 30.00% 1.3px, 32.50% 11.3px, 35.00% 9.7px, 37.50% 0.6px, 40.00% 13.8px, 42.50% 13.5px, 45.00% 9.2px, 47.50% 8.6px, 50.00% 2.2px, 52.50% 0.2px, 55.00% 7.4px, 57.50% 0.8px, 60.00% 2.7px, 62.50% 3.4px, 65.00% 0.4px, 67.50% 6.5px, 70.00% 6.2px, 72.50% 11.8px, 75.00% 7.3px, 77.50% 9.0px, 80.00% 7.0px, 82.50% 9.3px, 85.00% 6.4px, 87.50% 3.9px, 90.00% 14.0px, 92.50% 13.9px, 95.00% 11.8px, 97.50% 9.9px, 100.00% 4.4px, 100.00% calc(100% - 3.2px), 97.50% calc(100% - 4.0px), 95.00% calc(100% - 1.0px), 92.50% calc(100% - 10.7px), 90.00% calc(100% - 5.6px), 87.50% calc(100% - 11.9px), 85.00% calc(100% - 5.4px), 82.50% calc(100% - 13.4px), 80.00% calc(100% - 11.9px), 77.50% calc(100% - 0.0px), 75.00% calc(100% - 2.9px), 72.50% calc(100% - 12.7px), 70.00% calc(100% - 6.6px), 67.50% calc(100% - 13.7px), 65.00% calc(100% - 5.6px), 62.50% calc(100% - 1.0px), 60.00% calc(100% - 8.8px), 57.50% calc(100% - 10.9px), 55.00% calc(100% - 3.8px), 52.50% calc(100% - 1.2px), 50.00% calc(100% - 4.7px), 47.50% calc(100% - 13.5px), 45.00% calc(100% - 10.6px), 42.50% calc(100% - 1.7px), 40.00% calc(100% - 3.4px), 37.50% calc(100% - 1.4px), 35.00% calc(100% - 0.8px), 32.50% calc(100% - 11.2px), 30.00% calc(100% - 2.5px), 27.50% calc(100% - 7.8px), 25.00% calc(100% - 6.3px), 22.50% calc(100% - 2.7px), 20.00% calc(100% - 10.2px), 17.50% calc(100% - 1.8px), 15.00% calc(100% - 9.0px), 12.50% calc(100% - 1.6px), 10.00% calc(100% - 5.9px), 7.50% calc(100% - 3.0px), 5.00% calc(100% - 3.8px), 2.50% calc(100% - 13.6px), 0.00% calc(100% - 11.2px)); }
+html { scroll-behavior: smooth; }
+body { background: var(--paper-100); color: var(--navy-900); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+main { overflow-x: clip; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--navy-900); }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { text-wrap: balance; }
+img { max-width: 100%; }
+.wrap { max-width: 1160px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.sec { padding-block: var(--space-9); position: relative; }
+.sec.noite { clip-path: var(--tear); margin-block: -14px; z-index: 1; padding-block: calc(var(--space-9) + 14px); }
+@media (max-width: 760px) { .sec { padding-block: 72px; } .sec.noite { padding-block: 86px; } }
+
+.kicker { font: 600 12px/1.3 var(--font-sans); letter-spacing: .2em; text-transform: uppercase; color: var(--ground-fg-muted); }
+.hand { font-family: var(--font-hand); font-weight: 700; line-height: 1.05; }
+.h-sec { font: 800 clamp(32px, 4.6vw, 52px)/1.0 var(--font-sans); letter-spacing: -.02em; }
+.h-serif { font: 400 clamp(40px, 6vw, 76px)/.95 var(--font-serif); letter-spacing: -.01em; }
+.h-serif em { font-style: italic; }
+.lead { font: 500 clamp(18px, 2vw, 21px)/1.5 var(--font-sans); }
+.body { font: 400 17px/1.65 var(--font-sans); max-width: 58ch; }
+.muted { color: var(--ground-fg-muted); }
+.stack { display: grid; gap: var(--space-5); align-content: start; min-width: 0; }
+.cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4) var(--space-5); }
+.cta-note { font: 500 14px/1.4 var(--font-sans); color: var(--ground-fg-muted); }
+.cta-note b { color: var(--ground-fg); }
+
+/* foto com fallback: se a imagem não carregar, fica o quadro hachurado com a legenda */
+.ph { position: relative; background-color: var(--navy-700); background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.06) 0 2px, transparent 2px 12px); overflow: hidden; }
+.ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.ph .ph-label { position: absolute; left: 12px; top: 12px; font: 500 11px/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--slate-300); }
+
+/* ---------- header ---------- */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: var(--navy-900); color: var(--paper-50); border-bottom: 1px solid rgba(246,242,232,.1); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); padding-block: 12px; }
+.brand { display: flex; align-items: center; gap: 12px; color: inherit; text-decoration: none; }
+.brand .dpe-seal { width: 36px; height: 36px; box-shadow: 0 0 0 1.5px var(--accent); }
+.brand .dpe-seal svg { width: 16px; height: 16px; }
+.brand span { font: 400 24px/1 var(--font-serif); }
+.brand em { font-style: italic; }
+.top .dpe-btn { padding: 11px 18px; font-size: 13px; box-shadow: 3px 3px 0 var(--paper-50); }
+.top .dpe-btn:hover { box-shadow: 5px 5px 0 var(--paper-50); }
+@media (max-width: 480px) { .top .dpe-btn .long { display: none; } }
+
+/* ---------- hero ---------- */
+.hero { padding-block: 72px 120px; }
+.hero .grid { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); gap: var(--space-8); align-items: center; }
+.hero h1 { font: 800 clamp(40px, 6.2vw, 74px)/.98 var(--font-sans); letter-spacing: -.03em; color: var(--ground-fg); }
+.hero h1 .dpe-hl { padding: 0 .12em; }
+.hero .lead { color: var(--accent); font-weight: 700; }
+.collage { position: relative; display: flex; flex-direction: column; padding-top: 28px; }
+.collage .photo { position: relative; align-self: flex-end; width: 90%; padding: 10px 10px 44px; transform: rotate(2deg); }
+.collage .photo .ph { aspect-ratio: 4/3; }
+.collage .photo .ph img { object-position: 60% center; }
+.collage .photo .cap { position: absolute; right: 16px; bottom: 12px; font: 700 26px/1 var(--font-hand); color: var(--paper-ink); }
+.collage .ia { position: absolute; z-index: 3; right: -6px; top: 8px; transform: rotate(6deg); }
+/* a nota fica embaixo da foto, cobrindo só o canto inferior esquerdo (mar e mesa), nunca o Luiz */
+.collage .note { position: relative; z-index: 3; width: 230px; margin-top: -48px; margin-left: 2%; }
+.collage .tag { position: absolute; left: 4%; top: 0; z-index: 3; }
+@media (max-width: 900px) {
+  .hero .grid { grid-template-columns: 1fr; gap: var(--space-7); }
+  .collage { max-width: 520px; width: 100%; margin: 0 auto; }
+}
+@media (max-width: 420px) { .collage .note { width: 196px; margin-top: -8px; } .collage .photo { width: 96%; } .collage .photo .cap { font-size: 22px; } .collage .tag { font-size: 15px; padding: 11px 20px 9px; } }
+
+/* ---------- isso é você ---------- */
+.pain .grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: var(--space-8); align-items: start; }
+.pain .side { position: sticky; top: 110px; }
+.pain .side .hand { font-size: 40px; color: var(--slate-500); margin-top: var(--space-4); transform: rotate(-3deg); display: inline-block; }
+.chain { display: grid; gap: 6px; justify-items: start; }
+.chain .dpe-paper { padding: 24px 28px 26px; max-width: 520px; font: 600 clamp(18px, 2vw, 21px)/1.45 var(--font-sans); }
+.chain .dpe-paper:nth-of-type(odd) { transform: rotate(-1.2deg); }
+.chain .dpe-paper:nth-of-type(even) { transform: rotate(1deg); justify-self: end; }
+.chain .arrow { font: 700 40px/1 var(--font-hand); color: var(--slate-500); padding-left: 40%; }
+.chain .end { margin-top: var(--space-5); font-size: 38px; color: var(--navy-900); }
+.chain .end u { text-decoration-color: var(--accent); text-decoration-thickness: 6px; text-underline-offset: 2px; }
+@media (max-width: 860px) { .pain .grid { grid-template-columns: 1fr; gap: var(--space-6); } .pain .side { position: static; } .chain .dpe-paper:nth-of-type(even) { justify-self: start; } }
+
+/* ---------- história ---------- */
+.story .grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: var(--space-8); align-items: center; }
+.story .frame { padding: 10px; transform: rotate(-2deg); max-width: 440px; }
+.story .frame .ph { aspect-ratio: 4/5; }
+.story .q { font: 800 clamp(24px, 3vw, 32px)/1.15 var(--font-sans); color: var(--ground-fg-muted); }
+.story .q s { text-decoration-color: var(--danger); text-decoration-thickness: 3px; }
+.figs { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3) var(--space-5); margin-top: var(--space-4); padding-top: var(--space-5); border-top: 1px dashed var(--ground-line); }
+.fig { display: grid; gap: 6px; }
+.fig b { font: 600 clamp(48px, 6.4vw, 92px)/.9 var(--font-mono); letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
+.fig small { font: 500 12px/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ground-fg-muted); }
+.fig.old b { color: var(--ground-fg-muted); text-decoration: line-through; text-decoration-color: var(--danger); text-decoration-thickness: 5px; }
+.fig.new b { color: var(--accent); }
+.figs .arrow { font: 700 54px/1 var(--font-hand); color: var(--ground-fg); }
+.story .after { font-size: 36px; color: var(--accent); transform: rotate(-2deg); display: inline-block; }
+@media (max-width: 860px) { .story .grid { grid-template-columns: 1fr; } .story .frame { max-width: 360px; } }
+@media (max-width: 520px) { .figs { flex-direction: column; align-items: flex-start; } .figs .arrow-r { transform: rotate(90deg); width: 48px; margin-left: 8px; } }
+
+/* ---------- número de segurança ---------- */
+.ns .head { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: var(--space-7); align-items: end; }
+.ns .def { font: 500 clamp(19px, 2.1vw, 23px)/1.5 var(--font-sans); max-width: 34ch; }
+.ns .def b { font-weight: 800; }
+.ns .muda { margin-top: var(--space-5); font: 900 clamp(44px, 6.5vw, 80px)/.9 var(--font-sans); letter-spacing: -.02em; }
+.ns .flowbox { margin-top: var(--space-8); padding: var(--space-6); position: relative; }
+.ns .dpe-flow { justify-content: space-between; flex-wrap: nowrap; gap: 6px; }
+.ns .dpe-flow .step { font-size: clamp(12px, 1.15vw, 15px); padding: 14px 14px 12px; white-space: nowrap; }
+.ns .dpe-flow .arrow-r { width: 38px; }
+@media (max-width: 860px) { .ns .head { grid-template-columns: 1fr; } }
+@media (max-width: 1000px) {
+  .ns .dpe-flow { flex-direction: column; gap: 4px; }
+  .ns .dpe-flow .step { font-size: 15px; }
+  .ns .dpe-flow .arrow-r { transform: rotate(90deg); height: 24px; width: 34px; margin-block: 6px; }
+}
+
+/* ---------- antes / depois ---------- */
+.ba .top-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: var(--space-5); margin-bottom: var(--space-7); }
+.ba .dpe-ba { gap: var(--space-7); }
+.ba .dpe-ba > div { padding: var(--space-6) var(--space-6) 36px; }
+.ba .dpe-ba ul { font-size: 17px; gap: 14px; }
+.ba .dpe-ba .after { background: var(--navy-900); box-shadow: none; outline: 2px solid var(--accent); outline-offset: -10px; transform: rotate(1deg); }
+.ba .shot { aspect-ratio: 16/9; margin: calc(var(--space-6) * -1) calc(var(--space-6) * -1) var(--space-5); }
+.ba .before .shot { filter: grayscale(1) contrast(.9); }
+
+/* ---------- objeção ---------- */
+.obj .grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-8); align-items: center; }
+.obj .peraí { font-size: 46px; color: var(--slate-500); transform: rotate(-4deg); display: inline-block; }
+.obj .errado { font: 400 italic clamp(64px, 10vw, 128px)/.9 var(--font-serif); color: var(--red-700); transform: rotate(-4deg); display: inline-block; margin-top: var(--space-3); }
+.obj .card { padding: 40px 40px 44px; position: relative; transform: rotate(1.2deg); }
+.obj .card .fig b { color: var(--navy-900); font-size: clamp(56px, 7vw, 84px); }
+.obj .card .fig small { color: var(--slate-500); }
+.obj .card p { font: 400 17px/1.6 var(--font-sans); margin-top: var(--space-4); color: var(--slate-500); }
+.obj .card p strong { color: var(--navy-900); }
+@media (max-width: 860px) { .obj .grid { grid-template-columns: 1fr; } }
+
+/* ---------- módulos ---------- */
+.mods .head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: var(--space-5); margin-bottom: var(--space-8); }
+.mods .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6); align-items: start; }
+.mod { padding: 36px 30px 32px; display: grid; gap: var(--space-4); align-content: start; }
+.mod:nth-child(1) { transform: rotate(-1.2deg); }
+.mod:nth-child(2) { transform: rotate(.8deg); margin-top: 28px; }
+.mod:nth-child(3) { transform: rotate(-.6deg); }
+.mod .n { font: 600 56px/1 var(--font-mono); letter-spacing: -.04em; color: var(--navy-900); }
+.mod .n::after { content: ""; display: block; width: 44px; height: 6px; margin-top: 12px; background: var(--accent); }
+.mod h3 { font: 400 32px/1.02 var(--font-serif); }
+.mod h3 em { font-style: italic; }
+.mod p { font: 400 16px/1.6 var(--font-sans); color: var(--paper-ink-muted); }
+.mod .out { display: flex; gap: 10px; align-items: flex-start; padding-top: var(--space-4); border-top: 1.5px dashed var(--paper-edge); font: 700 15px/1.4 var(--font-sans); }
+.mod .out .dpe-check { width: 26px; height: 26px; }
+.mod .out .dpe-check svg { width: 16px; height: 16px; }
+.mod .out .hand { font-size: 22px; color: var(--slate-500); display: block; font-weight: 700; }
+.mods .cta-row { margin-top: var(--space-8); }
+
+/* ---------- resultado ---------- */
+.res .grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: var(--space-8); align-items: center; }
+.res .strips { display: grid; gap: 24px; }
+.res .dpe-strip { font-size: clamp(17px, 2.2vw, 24px); }
+.res .dpe-strip-wrap:nth-child(2) { transform: rotate(.7deg); margin-left: 4%; }
+.res .dpe-strip-wrap:nth-child(3) { transform: rotate(-.5deg); }
+.res .hand { font-size: 44px; color: var(--slate-500); }
+@media (max-width: 860px) { .res .grid { grid-template-columns: 1fr; gap: var(--space-6); } }
+
+/* ---------- pra quem é ---------- */
+.fit .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-7); margin-top: var(--space-7); }
+.fit .dpe-paper { padding: 34px 32px 36px; }
+.fit .dpe-paper:first-child { transform: rotate(-1deg); }
+.fit .dpe-paper:last-child { transform: rotate(1deg); }
+.fit h3 { font: 800 24px/1.1 var(--font-sans); margin-bottom: var(--space-5); }
+.fit ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+.fit li { display: flex; gap: 14px; align-items: flex-start; font: 500 17px/1.45 var(--font-sans); }
+.fit .dpe-check { width: 28px; height: 28px; margin-top: -2px; }
+.fit .dpe-check svg { width: 17px; height: 17px; }
+.fit .x { flex: none; width: 28px; text-align: center; font: 700 32px/.8 var(--font-hand); color: var(--red-700); }
+.fit .no li span:last-child { color: var(--paper-ink-muted); }
+
+/* ---------- oferta ---------- */
+.offer .grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: var(--space-8); align-items: start; }
+.offer .left { display: grid; gap: var(--space-8); justify-items: center; padding-top: var(--space-5); }
+.offer .left .dpe-titlecard { position: relative; }
+.offer .lesson { position: relative; width: min(440px, 100%); }
+.offer .lesson .pills { position: absolute; top: -18px; left: 16px; z-index: 2; display: flex; gap: 10px; }
+.offer .lesson .dpe-frame { transform: rotate(-1deg); }
+.offer .lesson .screen .ph { position: absolute; inset: 0; }
+.offer .lesson .lbl { margin-top: 22px; text-align: center; }
+.offer .lesson .lbl .dpe-hl { font-size: 26px; }
+.sheet { padding: 44px 44px 40px; position: relative; display: grid; gap: var(--space-6); }
+.sheet .k { color: var(--paper-ink-muted); }
+.sheet h2 { font: 800 clamp(28px, 3.4vw, 38px)/1.05 var(--font-sans); letter-spacing: -.02em; }
+.sheet ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+.sheet li { display: flex; gap: 14px; align-items: flex-start; }
+.sheet li .dpe-check { width: 30px; height: 30px; }
+.sheet li .dpe-check svg { width: 18px; height: 18px; }
+.sheet li b { display: block; font: 800 17px/1.3 var(--font-sans); }
+.sheet li span.t { font: 400 15px/1.55 var(--font-sans); color: var(--paper-ink-muted); }
+.bonus { padding: 20px 22px; background: var(--yellow-100); border: 1.5px dashed var(--navy-900); }
+.bonus .hand { font-size: 28px; }
+.bonus p { font: 500 15px/1.55 var(--font-sans); margin-top: 6px; }
+.price { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: var(--space-5); padding-top: var(--space-5); border-top: 2px solid var(--navy-900); }
+.price .v small { display: block; font: 600 13px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--paper-ink-muted); }
+.price .v b { display: block; font: 600 clamp(56px, 7vw, 80px)/1 var(--font-mono); letter-spacing: -.05em; margin-top: 6px; font-variant-numeric: tabular-nums; }
+.price .v b .n { display: inline-block; margin-left: .14em; }
+.price .v > span { font: 500 15px/1.4 var(--font-sans); color: var(--paper-ink-muted); }
+.guar { display: flex; gap: 14px; align-items: center; max-width: 240px; }
+.guar .dpe-seal { flex: none; width: 60px; height: 60px; }
+.guar .dpe-seal b { font: 600 22px/1 var(--font-mono); color: var(--accent); }
+.guar p { font: 600 14px/1.35 var(--font-sans); }
+.sheet .dpe-btn { justify-content: center; font-size: 17px; padding-block: 20px; }
+@media (max-width: 960px) { .offer .grid { grid-template-columns: 1fr; } .offer .left { order: 2; } }
+@media (max-width: 480px) { .sheet { padding: 32px 22px; } }
+
+/* ---------- caro ---------- */
+.caro .grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: var(--space-8); align-items: start; }
+.caro blockquote { margin: 0; font: 400 clamp(36px, 5vw, 60px)/1 var(--font-serif); color: var(--ground-fg); }
+.caro blockquote em { font-style: italic; }
+.caro .lindao { font-size: 48px; color: var(--accent); margin-top: var(--space-6); display: inline-block; transform: rotate(-3deg); }
+.caro ol { list-style: none; margin: var(--space-5) 0 0; padding: 0; display: grid; gap: var(--space-5); }
+.caro li { font: 500 clamp(18px, 2vw, 21px)/1.5 var(--font-sans); color: var(--ground-fg-muted); padding-left: 22px; border-left: 3px solid var(--ground-line); max-width: 56ch; }
+.caro li b { color: var(--ground-fg); font-weight: 800; }
+.caro .isso { margin-top: var(--space-7); font: 900 clamp(44px, 6.5vw, 80px)/.9 var(--font-sans); letter-spacing: -.02em; }
+.caro .meme { padding: 10px 10px 48px; transform: rotate(3deg); margin-top: var(--space-6); position: relative; }
+.caro .meme .ph { aspect-ratio: 1/1; }
+.caro .meme .cap { position: absolute; left: 14px; bottom: 12px; font: 700 24px/1 var(--font-hand); color: var(--paper-ink); }
+@media (max-width: 860px) { .caro .grid { grid-template-columns: 1fr; } .caro .meme { max-width: 320px; } }
+
+/* ---------- FAQ ---------- */
+.faq .grid { display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr); gap: var(--space-8); align-items: start; }
+.faq .side { position: sticky; top: 110px; display: grid; gap: var(--space-4); }
+.faq .side .hand { font-size: 32px; color: var(--slate-500); }
+.faq .mail { font: 500 15px/1.4 var(--font-mono); user-select: all; word-break: break-all; }
+.faq .dpe-faq .a { color: var(--slate-500); }
+@media (max-width: 860px) { .faq .grid { grid-template-columns: 1fr; gap: var(--space-6); } .faq .side { position: static; } }
+
+/* ---------- final ---------- */
+.final { padding-bottom: 0 !important; }
+.final .big { font: 800 clamp(38px, 6vw, 76px)/1 var(--font-sans); letter-spacing: -.03em; max-width: 16ch; }
+.final .h-serif { margin-top: var(--space-3); color: var(--accent); }
+.final .cta-row { margin-top: var(--space-7); }
+.foot { margin-top: var(--space-9); padding-block: var(--space-6) calc(var(--space-6) + 14px); border-top: 1px solid var(--ground-line); display: flex; flex-wrap: wrap; gap: var(--space-5) var(--space-7); justify-content: space-between; font: 400 14px/1.5 var(--font-sans); color: var(--ground-fg-muted); }
+.foot dl { display: flex; flex-wrap: wrap; gap: var(--space-5) var(--space-7); margin: 0; }
+.foot dt { font: 600 11px/1.3 var(--font-sans); letter-spacing: .18em; text-transform: uppercase; }
+.foot dd { margin: 4px 0 0; color: var(--ground-fg); }
+.foot a { color: inherit; }
+
+/* ---------- setas desenhadas e extras ---------- */
+.arrow-d { display: block; width: 34px; height: 54px; color: var(--slate-500); margin: 2px 0 2px 38%; }
+.arrow-d:nth-of-type(2) { margin-left: 52%; }
+.arrow-r { flex: none; width: 46px; height: 26px; color: var(--ground-fg-muted); }
+.ns .arrow-r { color: var(--slate-500); }
+.figs .arrow-r { width: 64px; height: 34px; color: var(--ground-fg); }
+.chain .end { line-height: 1.25; }
+.chain .end .u { position: relative; white-space: nowrap; }
+.squiggle { position: absolute; left: -2px; right: -2px; bottom: -8px; width: calc(100% + 4px); height: 14px; color: var(--accent); overflow: visible; }
+.squiggle path { stroke-width: 5; }
+.chain .next { font: 700 44px/1 var(--font-hand); color: var(--navy-900); margin-left: 6px; }
+.dpe-check--box > span { position: absolute; inset: 0; }
+.fig b span { display: inline-block; }
+.caro .intro { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-3) var(--space-6); }
+.caro .intro .lindao { margin-top: 0; }
+.caro .grid { margin-top: var(--space-6); grid-template-columns: minmax(0, 1fr); }
+.caro ol { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-6); }
+.caro li { max-width: none; }
+.caro .meme { margin: 0 0 0 auto; width: min(340px, 100%); }
+.end-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, .65fr); gap: var(--space-8); align-items: center; }
+.blank-wrap { position: relative; justify-self: center; width: min(320px, 100%); }
+.blank { padding: 30px 28px 26px; transform: rotate(2.5deg); }
+.blank .kicker { color: var(--paper-ink-muted); }
+.blank .line { display: flex; align-items: baseline; gap: 10px; margin-top: 14px; padding-bottom: 6px; border-bottom: 2.5px solid var(--navy-900); }
+.blank .rs { font: 600 40px/1 var(--font-mono); letter-spacing: -.04em; }
+.blank .fill { font-size: 56px; line-height: .9; color: var(--slate-500); }
+.blank .hint { margin-top: 12px; font-size: 26px; color: var(--slate-500); }
+.blank-wrap .seal { position: absolute; right: -22px; bottom: -40px; }
+@media (max-width: 860px) { .end-grid { grid-template-columns: 1fr; } .blank-wrap { justify-self: start; margin-left: 6px; } }
+@media (max-width: 640px) { .arrow-d, .arrow-d:nth-of-type(2) { margin-left: 30%; } }
+
+/* ================= movimento =================
+   Sem JS (ou com movimento reduzido) tudo aparece no estado final.
+   Com JS, [data-r] começa escondido e entra quando a seção aparece; grupos [data-seq] entram em sequência.
+   Usa as propriedades individuais translate/rotate/scale, que somam com a inclinação (transform) de cada papel. */
+.js [data-r] {
+  transition: opacity .55s ease, translate .75s cubic-bezier(.2,.9,.3,1.2), rotate .75s cubic-bezier(.2,.9,.3,1.2), scale .55s cubic-bezier(.2,.9,.3,1.3), clip-path .9s cubic-bezier(.65,0,.35,1);
+  transition-delay: var(--d, 0s);
+}
+.js [data-r]:not(.in) { opacity: 0; }
+.js [data-r="drop"]:not(.in)  { translate: 0 -34px; rotate: -7deg; scale: 1.04; }
+.js [data-r="rise"]:not(.in)  { translate: 0 28px; }
+.js [data-r="left"]:not(.in)  { translate: -60px 0; rotate: -3deg; }
+.js [data-r="right"]:not(.in) { translate: 60px 0; rotate: 3deg; }
+.js [data-r="pop"]:not(.in)   { scale: .4; rotate: -14deg; }
+.js [data-r="stamp"]:not(.in) { scale: 1.9; rotate: -10deg; }
+.js [data-r="write"] { opacity: 1; clip-path: inset(-20% 0 -20% 0); }
+.js [data-r="write"]:not(.in) { opacity: 1; clip-path: inset(-20% 100% -20% 0); }
+
+/* marca-texto que passa da esquerda pra direita (o texto continua legível antes) */
+.js .dpe-hl[data-r="sweep"] { opacity: 1; transition: background-size .8s cubic-bezier(.65,0,.35,1), color .3s ease; transition-delay: var(--d, 0s); }
+.js .dpe-hl[data-r="sweep"]:not(.in) { opacity: 1; background-size: 0% 100%; color: var(--ground-fg); }
+
+/* traço desenhado: setas, sublinhados, riscos */
+.ink-draw path { fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.js .ink-draw path { transition: stroke-dashoffset .7s cubic-bezier(.65,0,.35,1); transition-delay: var(--d, 0s); }
+.js .ink-draw path + path { transition-delay: calc(var(--d, 0s) + .45s); transition-duration: .3s; }
+.js .ink-draw:not(.in) path { stroke-dashoffset: 1; }
+.js .ink-draw[data-r]:not(.in) { opacity: 1; }
+
+/* risco fino que acompanha o texto, inclusive quando quebra linha */
+.strike {
+  --sw: 1.5px;
+  background: linear-gradient(var(--danger), var(--danger)) no-repeat 0 58% / 100% var(--sw);
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  transition: background-size .5s cubic-bezier(.65,0,.35,1); transition-delay: var(--d, 0s);
+}
+.js .strike:not(.in) { background-size: 0% var(--sw); }
+.fig.old .strike { --sw: 5px; }
+.dpe-ba .before li span:last-child { text-decoration: none; color: var(--paper-ink-muted); }
+
+/* passar o mouse num papel: ele "levanta" da mesa */
+@media (hover: hover) {
+  .lift { transition: translate .25s ease, box-shadow .25s ease, filter .25s ease; }
+  .lift:hover { translate: 0 -6px; }
+}
+@keyframes lp-bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 8px; } }
+.bob { display: inline-block; animation: lp-bob 1.6s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-r], .js .ink-draw path, .strike::after { transition: none !important; }
+  .bob { animation: none; }
+  html { scroll-behavior: auto; }
+}
+</style>
+
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Método DPE, voltar ao início"><span class="dpe-seal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2.5L5.5 13.2h5.6l-1.6 8.3 8-10.7h-5.6z" fill="currentColor"/></svg></span><span>Método <em>DPE</em></span></a>
+    <a class="dpe-btn" href="https://pay.kiwify.com.br/PTe6p8p">Quero<span class="long">&nbsp;viver isso</span>!</a>
+  </div>
+</header>
+
+<main id="inicio">
+
+<!-- 1. HERO -->
+<section class="sec noite hero dpe-ground" data-theme="noite">
+  <div class="wrap grid">
+    <div class="stack" data-seq data-step=".12">
+      <div class="kicker" data-r="rise">Para quem presta serviço digital</div>
+      <h1 data-r="rise">Você presta serviço, fatura e não tem <span class="dpe-hl" data-r="sweep">tempo</span> pra nada seu.</h1>
+      <p class="lead" data-r="rise">Ter mais cliente nunca foi a solução.</p>
+      <p class="body muted" data-r="rise">Café sem pressa, fim de semana sem celular, tempo pros seus projetos e a agência funcionando. Eu vivo assim hoje.</p>
+      <div class="cta-row" data-r="rise">
+        <a class="dpe-btn" href="https://pay.kiwify.com.br/PTe6p8p">Quero viver isso!</a>
+        <span class="cta-note"><b>12x de R$ 20</b> · garantia de 7 dias</span>
+      </div>
+    </div>
+    <div class="collage" data-seq data-base=".25" data-step=".18">
+      <figure class="dpe-paper photo" style="margin:0" data-r="drop">
+        <div class="ph"><span class="ph-label">foto · Luiz na praia</span><img src="img/hero-praia.jpg" alt="Luiz trabalhando no notebook numa cadeira de praia" onerror="this.remove()"></div>
+        <figcaption class="cap">segunda-feira, 10h</figcaption>
+      </figure>
+      <span class="dpe-paper dpe-tag tag" data-r="drop"><span class="dpe-tape"></span>Tempo</span>
+      <span class="dpe-pill ia" data-r="pop">Sim, é IA!</span>
+      <div class="note" data-r="drop">
+        <div class="dpe-paper dpe-torn dpe-note" style="transform:rotate(-3deg)">
+          <h4>Hoje</h4>
+          <ul>
+            <li><span class="dpe-check dpe-check--box"><span data-r="stamp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>Entregas</li>
+            <li><span class="dpe-check dpe-check--box"><span data-r="stamp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>Clientes</li>
+            <li><span class="dpe-check dpe-check--box"><span data-r="stamp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>Financeiro</li>
+            <li><span class="dpe-check dpe-check--box"><span data-r="stamp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>Parar às 18h</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. ISSO É VOCÊ -->
+<section class="sec pain dpe-ground" data-theme="papel">
+  <div class="wrap grid">
+    <div class="side" data-seq>
+      <div class="kicker" data-r="rise">O diagnóstico</div>
+      <h2 class="h-sec" style="margin-top:12px" data-r="rise">Isso é você?</h2>
+      <span class="hand" data-r="write">seja sincero...</span>
+    </div>
+    <div class="chain" data-seq data-step=".2" data-threshold=".08">
+      <p class="dpe-paper lift" data-r="left">No sábado, você responde cliente achando que é “só uma coisinha rápida”.</p>
+      <svg class="ink-draw arrow-d" viewBox="0 0 34 54" aria-hidden="true"><path pathLength="1" d="M17 3c-5 9 4 17 0 27c-2 6 1 11 0 17"/><path pathLength="1" d="M7 38c4 4 7 7 10 11c3-5 6-8 10-12"/></svg>
+      <p class="dpe-paper lift" data-r="right">Você diz sim pra tudo, porque dizer não gera insegurança do cliente sair.</p>
+      <svg class="ink-draw arrow-d" viewBox="0 0 34 54" aria-hidden="true"><path pathLength="1" d="M17 3c-5 9 4 17 0 27c-2 6 1 11 0 17"/><path pathLength="1" d="M7 38c4 4 7 7 10 11c3-5 6-8 10-12"/></svg>
+      <p class="dpe-paper lift" data-r="left">Você trabalha até tarde achando que isso é dedicação.</p>
+      <svg class="ink-draw arrow-d" viewBox="0 0 34 54" aria-hidden="true"><path pathLength="1" d="M17 3c-5 9 4 17 0 27c-2 6 1 11 0 17"/><path pathLength="1" d="M7 38c4 4 7 7 10 11c3-5 6-8 10-12"/></svg>
+      <p class="dpe-paper lift" data-r="right">E seu próprio projeto, aquele que você vai desengavetar “quando sobrar tempo”, nunca começa.</p>
+      <p class="hand end" data-r="write">Acertei? Então <span class="u">continue lendo<svg class="ink-draw squiggle" viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 9c28-6 58-7 92-3s68 5 102-2"/></svg></span>.</p>
+      <span class="bob next" data-r="rise" aria-hidden="true">↓</span>
+    </div>
+  </div>
+</section>
+
+<!-- 3. HISTÓRIA -->
+<section class="sec noite story dpe-ground" data-theme="noite">
+  <div class="wrap grid">
+    <figure class="dpe-paper frame lift" style="margin:0" data-r="drop">
+      <span class="dpe-tape"></span>
+      <div class="ph"><span class="ph-label">foto · café sem pressa</span><img src="img/cafe.jpg" alt="Café da manhã tranquilo" loading="lazy" onerror="this.remove()"></div>
+    </figure>
+    <div class="stack" data-seq data-step=".14">
+      <p class="q" data-r="rise">Seu café da manhã é na <span class="strike">correria</span>?</p>
+      <h2 class="h-serif" data-r="rise">O meu é na <em>calma.</em></h2>
+      <p class="body muted" data-r="rise">Meu fim de semana é focado só em mim e em quem eu amo, e parte do meu tempo vai pros meus outros projetos. Minha prestação de serviço não suga meu dia, minha agenda nem minha vida.</p>
+      <p class="body muted" data-r="rise">Mas nem sempre foi assim. A minha vida girava em torno dos clientes.</p>
+      <div class="figs">
+        <div class="fig old" data-r="rise"><b><span class="strike" data-count="30" data-suffix="+">30+</span></b><small>clientes ao mesmo tempo</small></div>
+        <svg class="ink-draw arrow-r" viewBox="0 0 46 26" aria-hidden="true"><path pathLength="1" d="M3 14c8-3 15 2 24-1c5-1 9 0 14 0"/><path pathLength="1" d="M32 5c3 3 6 5 10 8c-4 3-7 6-9 9"/></svg>
+        <div class="fig new" data-r="pop"><b data-count="10">10</b><small>pagantes · menos trabalho, mais lucro</small></div>
+      </div>
+      <span class="hand after" data-r="write">até que eu entendi isso...</span>
+    </div>
+  </div>
+</section>
+
+<!-- 4. NÚMERO DE SEGURANÇA -->
+<section class="sec ns dpe-ground" data-theme="papel" id="numero">
+  <div class="wrap">
+    <div class="head" data-seq data-step=".16">
+      <div>
+        <div class="kicker" data-r="rise">O conceito central</div>
+        <h2 class="h-serif" style="margin-top:14px;font-size:clamp(48px,8vw,104px)" data-r="rise">Número de <em>segurança</em></h2>
+      </div>
+      <div>
+        <p class="def" data-r="rise">Quando você sabe <b>QUANTO</b> precisa faturar pra viver bem, entregar um bom serviço e ainda ter tempo sobrando…</p>
+        <p class="muda" data-r="stamp"><span class="dpe-hl dpe-hl--block">TUDO MUDA.</span></p>
+      </div>
+    </div>
+    <div class="dpe-paper flowbox" data-r="rise">
+      <span class="dpe-tape"></span>
+      <div class="dpe-flow" data-seq data-step=".18" data-base=".2">
+        <span class="dpe-paper step" data-r="pop">Faturamento</span><svg class="ink-draw arrow-r" viewBox="0 0 46 26" aria-hidden="true"><path pathLength="1" d="M3 14c8-3 15 2 24-1c5-1 9 0 14 0"/><path pathLength="1" d="M32 5c3 3 6 5 10 8c-4 3-7 6-9 9"/></svg>
+        <span class="dpe-paper step" data-r="pop">Clientes totais</span><svg class="ink-draw arrow-r" viewBox="0 0 46 26" aria-hidden="true"><path pathLength="1" d="M3 14c8-3 15 2 24-1c5-1 9 0 14 0"/><path pathLength="1" d="M32 5c3 3 6 5 10 8c-4 3-7 6-9 9"/></svg>
+        <span class="dpe-paper step is-key" data-r="stamp">Número de segurança</span><svg class="ink-draw arrow-r" viewBox="0 0 46 26" aria-hidden="true"><path pathLength="1" d="M3 14c8-3 15 2 24-1c5-1 9 0 14 0"/><path pathLength="1" d="M32 5c3 3 6 5 10 8c-4 3-7 6-9 9"/></svg>
+        <span class="dpe-paper step" data-r="pop">Caixa definido</span><svg class="ink-draw arrow-r" viewBox="0 0 46 26" aria-hidden="true"><path pathLength="1" d="M3 14c8-3 15 2 24-1c5-1 9 0 14 0"/><path pathLength="1" d="M32 5c3 3 6 5 10 8c-4 3-7 6-9 9"/></svg>
+        <span class="dpe-paper step" data-r="pop">Tempo sobrando</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. ANTES / DEPOIS -->
+<section class="sec noite ba dpe-ground" data-theme="noite">
+  <div class="wrap">
+    <div class="top-row" data-seq>
+      <h2 class="h-sec" data-r="rise">O que muda na prática</h2>
+      <a class="dpe-btn" href="https://pay.kiwify.com.br/PTe6p8p" data-r="rise">Quero viver isso!</a>
+    </div>
+    <div class="dpe-ba">
+      <div class="dpe-paper before" style="transform:rotate(-1.2deg)" data-seq data-step=".22" data-r="left">
+        <div class="ph shot"><span class="ph-label">foto · antes</span><img src="img/antes.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        <h4>Antes do DPE</h4>
+        <ul>
+          <li><span class="x">×</span><span class="strike">Trabalhava até tarde</span></li>
+          <li><span class="x">×</span><span class="strike">Não tinha tempo para nada</span></li>
+          <li><span class="x">×</span><span class="strike">Ganhava pouco, sem lucro</span></li>
+          <li><span class="x">×</span><span class="strike">Fazia reunião o tempo todo</span></li>
+          <li><span class="x">×</span><span class="strike">Achava que mais clientes era a solução</span></li>
+          <li><span class="x">×</span><span class="strike">Vivia estressado</span></li>
+        </ul>
+      </div>
+      <div class="after" data-seq data-step=".2" data-base=".3" data-r="right">
+        <div class="ph shot"><span class="ph-label">foto · depois</span><img src="img/depois.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        <h4>Depois do DPE</h4>
+        <ul>
+          <li><span class="dpe-check" data-r="stamp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Tem hora para PARAR de trabalhar</span></li>
+          <li><span class="dpe-check" data-r="stamp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Raramente faz reuniões</span></li>
+          <li><span class="dpe-check" data-r="stamp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Ganha muito mais, com lucro</span></li>
+          <li><span class="dpe-check" data-r="stamp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Menos clientes, menos estresse, menos demanda</span></li>
+          <li><span class="dpe-check" data-r="stamp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Tempo para si e para quem ama</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. OBJEÇÃO -->
+<section class="sec obj dpe-ground" data-theme="papel">
+  <div class="wrap grid">
+    <div class="stack" data-seq data-step=".3">
+      <span class="hand peraí" data-r="write">peraí, Luiz...</span>
+      <h2 class="h-sec" data-r="rise">Com menos clientes, se um sair, <span class="dpe-hl">FOD#U!</span> Certo?</h2>
+      <span class="errado" data-r="stamp">Errado.</span>
+    </div>
+    <div class="dpe-paper card lift" data-r="right" style="--d:.5s">
+      <span class="dpe-tape"></span>
+      <div class="fig"><b>3–6</b><small>meses de contas cobertas</small></div>
+      <p>No DPE você aprende a construir <strong>CAIXA</strong>: dinheiro suficiente pra segurar as contas por meses, caso algum cliente saia.</p>
+      <p>Isso te dá tempo de repor sua cartela. Cliente que sai vira problema de agenda, <strong>não de sobrevivência</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7. MÓDULOS -->
+<section class="sec noite mods dpe-ground" data-theme="noite" id="modulos">
+  <div class="wrap">
+    <div class="head" data-seq>
+      <div>
+        <div class="kicker" data-r="rise">3 módulos · poucas horas de aula</div>
+        <h2 class="h-sec" style="margin-top:12px" data-r="rise">O que você constrói com o DPE</h2>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><span class="dpe-pill" data-r="pop">Curtas</span><span class="dpe-pill dpe-pill--paper" data-r="pop">Práticas</span></div>
+    </div>
+    <div class="grid" data-seq data-step=".18">
+      <article class="dpe-paper mod lift" data-r="drop">
+        <span class="dpe-tape"></span>
+        <div class="n">01</div>
+        <h3>Número de <em>segurança</em></h3>
+        <p>Quanto você precisa faturar pra ter qualidade de entrega, ganhar bem e sobrar tempo. O limite de clientes que cabe nesse número, a regra pra recusar ou reprecificar quem não cabe, e o tamanho da sua reserva de 3 a 6 meses.</p>
+        <div class="out"><span class="dpe-check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><span class="hand">você sai com</span>seu número calculado</div></div>
+      </article>
+      <article class="dpe-paper mod lift" data-r="drop">
+        <span class="dpe-tape"></span>
+        <div class="n">02</div>
+        <h3>Sua semana <em>desenhada</em></h3>
+        <p>Horário fixo de parar e blocos de trabalho decididos antes, não na hora. Você não precisa de mais disciplina, precisa de menos decisão pra tomar na hora.</p>
+        <div class="out"><span class="dpe-check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><span class="hand">você sai com</span>sua semana montada na agenda</div></div>
+      </article>
+      <article class="dpe-paper mod lift" data-r="drop">
+        <span class="dpe-tape"></span>
+        <div class="n">03</div>
+        <h3>Seu projeto <em>fora da gaveta</em></h3>
+        <p>Como abrir espaço real na agenda pro seu próprio projeto, incluindo o que delegar e o que manter sob seu controle.</p>
+        <div class="out"><span class="dpe-check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><span class="hand">você sai com</span>um plano pro seu projeto começar</div></div>
+      </article>
+    </div>
+    <div class="cta-row">
+      <a class="dpe-btn" href="https://pay.kiwify.com.br/PTe6p8p">Quero viver isso!</a>
+      <span class="cta-note">Cada módulo termina com uma tarefa curta, feita no mesmo dia.</span>
+    </div>
+  </div>
+</section>
+
+<!-- 8. RESULTADO -->
+<section class="sec res dpe-ground" data-theme="papel">
+  <div class="wrap grid">
+    <div class="stack" data-seq>
+      <span class="hand" data-r="write">e no fim disso tudo...</span>
+      <h2 class="h-sec" data-r="rise">Você terá:</h2>
+    </div>
+    <div class="strips" data-seq data-step=".22" data-base=".2">
+      <div class="dpe-strip-wrap" data-r="left"><span class="dpe-tape"></span><div class="dpe-strip">Menos clientes para gerir<span class="dpe-check" data-r="stamp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="dpe-strip-wrap" data-r="right"><span class="dpe-tape"></span><div class="dpe-strip">MUITO mais dinheiro no bolso<span class="dpe-check" data-r="stamp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      <div class="dpe-strip-wrap" data-r="left"><span class="dpe-tape"></span><div class="dpe-strip">Tempo e energia sobrando<span class="dpe-check" data-r="stamp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. PRA QUEM É -->
+<section class="sec noite fit dpe-ground" data-theme="noite">
+  <div class="wrap">
+    <div data-seq>
+      <div class="kicker" data-r="rise">Antes de entrar</div>
+      <h2 class="h-sec" style="margin-top:12px" data-r="rise">Isso é pra você?</h2>
+    </div>
+    <div class="grid">
+      <div class="dpe-paper yes lift" data-r="drop" data-seq data-step=".16">
+        <h3>É pra você se:</h3>
+        <ul>
+          <li data-r="rise"><span class="dpe-check" data-r="stamp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Presta serviço digital (tráfego, social media, design, consultoria, agência) e já tem cliente</span></li>
+          <li data-r="rise"><span class="dpe-check" data-r="stamp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Vive no operacional: reunião, incêndio, decisão de última hora</span></li>
+          <li data-r="rise"><span class="dpe-check" data-r="stamp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Trabalha muito e não sobra tempo nem pros seus próprios projetos</span></li>
+        </ul>
+      </div>
+      <div class="dpe-paper no lift" data-r="drop" data-seq data-step=".16" data-base=".25">
+        <h3>Não é pra você se:</h3>
+        <ul>
+          <li data-r="rise"><span class="x" data-r="pop">×</span><span>Ainda não tem cliente e quer abrir uma agência do zero</span></li>
+          <li data-r="rise"><span class="x" data-r="pop">×</span><span>Procura uma fórmula pra pegar mais cliente e faturar mais rápido</span></li>
+          <li data-r="rise"><span class="x" data-r="pop">×</span><span>Busca motivação genérica. Aqui é estrutura e execução</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. OFERTA -->
+<section class="sec offer dpe-ground" data-theme="papel" id="oferta">
+  <div class="wrap grid">
+    <div class="left" data-seq data-step=".25">
+      <div class="dpe-paper dpe-torn dpe-titlecard" style="transform:rotate(-1.5deg)" data-r="drop">
+        <div class="k">Dá uma olhada nisso</div>
+        <h2>Método <em>DPE</em></h2>
+        <span class="bar"></span>
+        <div class="k2">Disciplina · Planejamento · Execução</div>
+      </div>
+      <div class="lesson" data-r="rise">
+        <div class="pills"><span class="dpe-pill" data-r="pop">Curtas</span><span class="dpe-pill dpe-pill--paper" data-r="pop">Práticas</span></div>
+        <div class="dpe-frame"><div class="screen"><div class="ph"><span class="ph-label">print · área de membros</span><img src="img/mesa.jpg" alt="Mesa de trabalho organizada" loading="lazy" onerror="this.remove()"></div></div></div>
+        <div class="lbl"><span class="dpe-hl dpe-hl--block" data-r="sweep">MATERIAL DE APOIO</span></div>
+      </div>
+    </div>
+    <div class="dpe-paper sheet" data-r="rise" data-seq data-step=".14" data-base=".15">
+      <span class="dpe-tape"></span>
+      <div>
+        <div class="kicker k">O que você está levando</div>
+        <h2 style="margin-top:10px">Acesso completo ao Método DPE</h2>
+      </div>
+      <ul>
+        <li data-r="rise"><span class="dpe-check" data-r="stamp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>O passo a passo guiado</b><span class="t">Pra ter menos clientes, mais dinheiro no bolso e tempo livre pra você, seus projetos e quem você ama.</span></div></li>
+        <li data-r="rise"><span class="dpe-check" data-r="stamp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Suporte humanizado e RÁPIDO</b><span class="t">Dúvidas por WhatsApp, resposta em até 1 dia útil.</span></div></li>
+        <li data-r="rise"><span class="dpe-check" data-r="stamp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>1 ano de acesso</b><span class="t">Com todas as atualizações, na área de alunos da Kiwify.</span></div></li>
+      </ul>
+      <div class="bonus" data-r="rise">
+        <span class="hand">+ bônus exclusivo</span>
+        <p>Materiais de apoio, área de organização pessoal, vídeo-aulas complementares, links de produtos organizados e acesso SECRETO ao meu sistema, meu operacional e minha gestão financeira.</p>
+      </div>
+      <div class="price">
+        <div class="v" data-r="pop"><small>12x de</small><b>R$<span class="n" data-count="20">20</span></b><span>ou R$ 197 à vista</span></div>
+        <div class="guar" data-r="rise"><span class="dpe-seal" data-r="stamp"><b>7</b></span><p>Garantia incondicional de 7 dias. Sem precisar explicar o motivo.</p></div>
+      </div>
+      <a class="dpe-btn" href="https://pay.kiwify.com.br/PTe6p8p" data-r="rise">Quero viver isso!</a>
+    </div>
+  </div>
+</section>
+
+<!-- 11. ACHEI CARO -->
+<section class="sec noite caro dpe-ground" data-theme="noite">
+  <div class="wrap">
+    <div class="intro" data-seq data-step=".35">
+      <blockquote data-r="rise">“Ah, depois eu vejo... <em>achei caro.</em>”</blockquote>
+      <span class="hand lindao" data-r="write">Lindão...</span>
+    </div>
+    <div class="grid">
+      <div data-seq data-step=".22">
+        <ol>
+          <li data-r="left"><b>Caro é</b> viver PRIORIZANDO os problemas dos outros e nunca ter tempo para os seus.</li>
+          <li data-r="left"><b>Caro é</b> ter dificuldade pra dormir com medo de não pagar as contas porque perdeu mais um cliente.</li>
+          <li data-r="left"><b>Caro é</b> ver quem tem menos capacidade que você prosperando, enquanto você dá o sangue e fica pra trás.</li>
+        </ol>
+        <p class="isso" data-r="stamp"><span class="dpe-hl dpe-hl--block">ISSO é caro.</span></p>
+        <div class="cta-row" style="margin-top:var(--space-7)" data-r="rise">
+          <a class="dpe-btn" href="https://pay.kiwify.com.br/PTe6p8p">Quero viver isso!</a>
+          <span class="cta-note">Entre para o DPE <b>agora</b> e mude isso.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12. FAQ -->
+<section class="sec faq dpe-ground" data-theme="papel" id="faq">
+  <div class="wrap grid">
+    <div class="side" data-seq>
+      <div class="kicker" data-r="rise">Dúvidas</div>
+      <h2 class="h-sec" data-r="rise">Perguntas frequentes</h2>
+      <span class="hand" data-r="write">não achou a sua? me manda:</span>
+      <span class="mail" data-r="rise">contato.euluizgabriel@gmail.com</span>
+    </div>
+    <div class="dpe-faq" data-seq data-step=".08" data-threshold=".05">
+      <details id="faq-0" data-r="rise" open><summary>Isso é pra mim?</summary><div class="a">É se você presta serviço digital (tráfego, social media, design, consultoria, agência), já tem cliente pagando e vive apagando incêndio. Pode ser freelancer sozinho ou ter equipe. Se você ainda não tem cliente, ainda não é a hora: o que eu ensino precisa de uma operação rodando pra você ajustar.</div></details>
+      <details id="faq-1" data-r="rise"><summary>Quanto tempo vou gastar pra fazer o curso?</summary><div class="a">São poucas horas de aula no total, em 3 módulos. Sei que quem vive sem tempo não vai parar uma semana pra estudar, então cada módulo termina com uma tarefa curta que você faz no mesmo dia. Faz um módulo por vez, no ritmo que couber na sua semana.</div></details>
+      <details id="faq-2" data-r="rise"><summary>Já comprei curso e não apliquei nada. Esse vai ser diferente?</summary><div class="a">Curso que só tem aula vira vídeo parado, e eu sei disso. Por isso cada módulo termina com uma coisa pronta na sua mão: no primeiro, o seu número de segurança calculado. No segundo, a sua semana montada na agenda. No terceiro, um plano pro seu projeto sair da gaveta. Mesmo assim, se você assistir e não fizer, não adianta. Nenhum curso faz isso por você.</div></details>
+      <details id="faq-3" data-r="rise"><summary>Se eu ficar com menos cliente, não vou ganhar menos?</summary><div class="a">Pode acontecer se você fizer no chute, e é por isso que o número vem antes de qualquer decisão. O módulo 1 mostra quanto você precisa faturar pra viver bem e quantos clientes cabem nisso. Pra muita gente a conta fecha cobrando mais de quem já tem, recusando o cliente que paga pouco e dá muito trabalho, ou os dois. Eu fui de 30+ clientes pra 10 pagantes e hoje trabalho menos e ganho mais. Esse foi o meu caso, e o curso te dá a conta pra você decidir com número na mão, não com medo.</div></details>
+      <details id="faq-4" data-r="rise"><summary>E se um cliente sair?</summary><div class="a">Com menos cliente, cada um pesa mais, então o risco existe. O que segura é caixa. No módulo 1 você calcula uma reserva pra agência rodar de 3 a 6 meses e vê como ir montando ela aos poucos. Com reserva, cliente que sai vira problema de agenda, não de sobrevivência.</div></details>
+      <details id="faq-5" data-r="rise"><summary>Isso não é só mais um curso de produtividade?</summary><div class="a">Não. Não tem técnica de foco, app de tarefa nem rotina de acordar às 5h. O assunto aqui são três decisões do seu negócio: quanto faturar, quantos clientes atender e a hora de parar de trabalhar. Todo o resto vem depois delas.</div></details>
+      <details id="faq-6" data-r="rise"><summary>Como funciona o suporte?</summary><div class="a">Você tira dúvida por WhatsApp e eu respondo em até 1 dia útil. Não tem grupo de WhatsApp nem call. Fiz assim de propósito: se eu ficasse disponível o dia inteiro, estaria ensinando uma coisa e fazendo o contrário.</div></details>
+      <details id="faq-7" data-r="rise"><summary>Como funciona a garantia?</summary><div class="a">Você tem 7 dias a partir da compra pra pedir o dinheiro de volta, sem precisar explicar o motivo. É só me mandar um e-mail.</div></details>
+      <details id="faq-8" data-r="rise"><summary>Como eu acesso e por quanto tempo?</summary><div class="a">Assim que o pagamento é aprovado, você recebe o acesso por e-mail, na área de alunos da Kiwify. Você terá 1 ano de acesso ao DPE e suas atualizações. Tempo mais do que suficiente para ver, aplicar e MUDAR.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- 13. FINAL -->
+<section class="sec noite final dpe-ground" data-theme="noite">
+  <div class="wrap">
+    <div class="end-grid">
+      <div data-seq data-step=".18">
+        <p class="big" data-r="rise">Você não precisa de <span class="dpe-hl" data-r="sweep">MAIS</span> clientes.</p>
+        <p class="h-serif" data-r="rise">Precisa do seu número de <em>segurança.</em></p>
+        <div class="cta-row" data-r="rise">
+          <a class="dpe-btn" href="https://pay.kiwify.com.br/PTe6p8p">Quero viver isso!</a>
+          <span class="cta-note"><b>12x de R$ 20</b> ou R$ 197 à vista · garantia de 7 dias</span>
+        </div>
+      </div>
+      <div class="blank-wrap" data-seq data-base=".3" data-step=".3">
+        <div class="dpe-paper blank lift" data-r="drop">
+          <span class="dpe-tape"></span>
+          <div class="kicker">Seu número de segurança</div>
+          <div class="line"><span class="rs">R$</span><span class="fill hand" data-r="write">?</span></div>
+          <div class="hint hand" data-r="write">descobre no módulo 1</div>
+        </div>
+        <span class="dpe-seal dpe-seal--lg seal" data-r="stamp" role="img" aria-label="Selo DPE"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2.5L5.5 13.2h5.6l-1.6 8.3 8-10.7h-5.6z" fill="currentColor"/></svg></span>
+      </div>
+    </div>
+    <footer class="foot">
+      <dl>
+        <div><dt>Método</dt><dd>DPE · Disciplina, Planejamento e Execução</dd></div>
+        <div><dt>Criador</dt><dd>Luiz Gabriel</dd></div>
+        <div><dt>Contato</dt><dd style="user-select:all">contato.euluizgabriel@gmail.com</dd></div>
+      </dl>
+      <div>© 2026 DPE · <a href="#termos">Termos de Uso</a> · <a href="#privacidade">Política de Privacidade</a></div>
+    </footer>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function () {
+  // FAQ: uma resposta aberta por vez
+  var items = document.querySelectorAll('.dpe-faq details');
+  items.forEach(function (d) { d.addEventListener('toggle', function () { if (d.open) items.forEach(function (o) { if (o !== d) o.open = false; }); }); });
+
+  var root = document.documentElement;
+  if (!root.classList.contains('js')) return;
+  var ANIM = '[data-r], .ink-draw, .strike, [data-count]';
+
+  function countUp(el, delay) {
+    var to = +el.getAttribute('data-count'), suf = el.getAttribute('data-suffix') || '', dur = 900;
+    el.textContent = '0' + suf;
+    setTimeout(function () {
+      var t0 = performance.now();
+      (function tick(t) {
+        var p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(to * e) + suf;
+        if (p < 1) requestAnimationFrame(tick);
+      })(t0);
+    }, delay * 1000);
+  }
+  function show(el, delay) {
+    el.style.setProperty('--d', delay.toFixed(2) + 's');
+    if (el.hasAttribute('data-count')) countUp(el, delay);
+    el.classList.add('in');
+    // depois de entrar, zera o atraso para o hover responder na hora
+    setTimeout(function () { el.style.setProperty('--d', '0s'); }, (delay + 1.4) * 1000);
+  }
+  // volta tudo ao estado inicial (usado quando o bloco sai por baixo da tela, ao rolar pra cima)
+  function reset(target) {
+    var els = [target].concat([].slice.call(target.querySelectorAll(ANIM)));
+    els.forEach(function (el) {
+      if (!el.classList.contains('in')) return;
+      el.style.setProperty('--d', '0s');
+      el.classList.remove('in');
+    });
+    target.querySelectorAll('[data-seq]').forEach(function (s) { s.removeAttribute('data-base-run'); });
+  }
+  function play(target) {
+    if (target.hasAttribute('data-seq')) {
+      var base = parseFloat(target.getAttribute('data-base-run') || target.getAttribute('data-base') || 0), step = parseFloat(target.getAttribute('data-step') || .12), i = 0;
+      var own = [target].concat([].slice.call(target.querySelectorAll(ANIM))).filter(function (el) {
+        if (el === target) return el.matches(ANIM);
+        return el.parentElement.closest('[data-seq]') === target;
+      });
+      own.forEach(function (el) {
+        var inner = el !== target && el.hasAttribute('data-seq');
+        show(el, base + step * i++);
+        if (inner) { el.setAttribute('data-base-run', (base + step * i).toFixed(2)); play(el); }
+      });
+    } else {
+      var d = parseFloat(getComputedStyle(target).getPropertyValue('--d')) || 0;
+      show(target, d);
+    }
+  }
+  // entra na tela: toca. Sai por baixo (o visitante rolou pra cima): reinicia, e toca de novo na próxima descida.
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      var t = e.target;
+      if (e.isIntersecting) {
+        if (!t._played) { t._played = true; play(t); }
+      } else if (t._played && e.boundingClientRect.top > 0) {
+        t._played = false; reset(t);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+  // observa cada grupo de topo e cada elemento solto
+  document.querySelectorAll('[data-seq]').forEach(function (g) { if (!g.parentElement.closest('[data-seq]')) io.observe(g); });
+  document.querySelectorAll(ANIM).forEach(function (el) { if (!el.closest('[data-seq]')) io.observe(el); });
+  // rede de segurança: nada fica escondido se o observer falhar
+  setTimeout(function () {
+    document.querySelectorAll(ANIM).forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.top < innerHeight && r.bottom > 0 && !el.classList.contains('in')) show(el, 0);
+    });
+  }, 2500);
+})();
+</script>
+
+</body>
+</html>
